@@ -1,0 +1,15 @@
+{
+  "name": "auto-host-markdown-image",
+  "main": "./lib/auto-host-markdown-image",
+  "version": "0.1.0",
+  "description": "Add an image to a markdown document with automatic free image hosting",
+  "activationEvents": [],
+  "repository": "https://github.com/mark-hahn/auto-host-markdown-image",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.130.0"
+  },
+  "dependencies": {
+    
+  }
+}
