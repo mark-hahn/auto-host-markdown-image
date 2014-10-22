@@ -3,6 +3,10 @@ auto-host-markdown-image
 
 Add an image to a markdown document with automatic free image hosting.
 
+
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/evcg2sm.gif?delhash=RszWz9FmliOt4SM)
+
+
 auto-host-markdown-image (ahmi) is an Atom editor package that allows easy insertion of image files into markdown documents.  The file can be selected from the file-tree, or the tab for an opened image can be dragged into the markdown.  The file is pushed to the free Imgur hosting service.  Then the Imgur URL for the image is formatted and inserted into the markdown.  The image shows in the markdown preview immediately.
 
 ## Installation
