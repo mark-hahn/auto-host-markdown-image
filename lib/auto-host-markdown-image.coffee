@@ -2,11 +2,12 @@
 # lib/auto-host-markdown-image.coffee
 
 DummyItem = require './dummy-item'
+{drag}    = require './drag'
 
 module.exports = 
 class AutoHostMarkdownImage
   configDefaults:
-    autoOpenFileRegex: '-mdimg\.(jpeg|jpg|gif)$'
+    autoOpenFileRegex: 'markdown\\.(jpeg|jpg|gif|png)$'
   
   activate: ->
     regexStr = atom.config.get 'auto-host-markdown-image.autoOpenFileRegex'
@@ -28,6 +29,8 @@ class AutoHostMarkdownImage
         editor = atom.workspace.getActivePaneItem()
         if editor?.getGrammar?()?.name is 'GitHub Markdown'
           new DummyItem filePath, editor
+      
+    atom.workspaceView.on 'dragend', '.pane.active .tab-bar .sortable', (e) -> drag(e)
 
   destroy: -> atom.workspace.unregisterOpener @opener
       

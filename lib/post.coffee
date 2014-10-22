@@ -20,9 +20,7 @@ exports.post = (filePath, cb) ->
       Authorization: 'Client-ID ' + imgur_client_id
 
   request options, (err, res, body) ->
-    console.log 'auto-host-markdown-image post res', {options, err, status: res.headers.status, body}
     if err or body.status isnt 200
-      console.log 'auto-host-markdown-image post error', {options, err, body}
       atom.confirm
         message: 'Auto-host-markdown-image Error:\n\n'
         detailedMessage: 'Error uploading image to imgur: ' +
