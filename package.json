@@ -10,6 +10,6 @@
     "atom": ">0.130.0"
   },
   "dependencies": {
-    
+    "emissary": "^1.3.1"
   }
 }

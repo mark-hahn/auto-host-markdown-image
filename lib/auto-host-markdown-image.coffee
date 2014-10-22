@@ -1,12 +1,12 @@
 
 # lib/auto-host-markdown-image.coffee
 
-FilePaster = require './file-paster'
+DummyItem = require './dummy-item'
 
 module.exports = 
 class AutoHostMarkdownImage
   configDefaults:
-    autoOpenFileRegex: '^mdimg-'
+    autoOpenFileRegex: '-mdimg\.(jpeg|jpg|gif)$'
   
   activate: ->
     regexStr = atom.config.get 'auto-host-markdown-image.autoOpenFileRegex'
@@ -19,14 +19,16 @@ class AutoHostMarkdownImage
                          'regular expression: "' + regexStr + '"\n\n' +
                          'It must be a valid Javascript regex without the ' +
                          'surrounding slash characters.\n\n' +
-                         'Please correct and reload Atom'.
+                         'Please correct and reload Atom.'
         buttons: ['Close']
       return
 
     if regex then atom.workspace.registerOpener (filePath) =>
-      # how to do this without opening new tab?
-      if regex.text filePath then new FilePaster filePath
-    
+      if regex.test(filePath) 
+        editor = atom.workspace.getActivePaneItem()
+        if editor?.getGrammar?()?.name is 'GitHub Markdown'
+          new DummyItem filePath, editor
+
   destroy: -> atom.workspace.unregisterOpener @opener
       
 module.exports = new AutoHostMarkdownImage
