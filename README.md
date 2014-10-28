@@ -21,6 +21,12 @@ Install ahmi with the command `apm install auto-host-markdown-image` or by using
 
 - Drag the tab above the image file into the markdown text.  The image will be inserted at the cursor.
 
+## Significant Feature
+
+The normal method of hosting an image in the project's repo and linking to it in the readme has a problem.  If you fork that repo then the forked readme continues to point to the original repo image.  If that image is changed the forked version will be broken.
+
+This hosting solution doesn't have that problem.  The hosting is immutable and permanent. 
+
 ## Hosting cost
 
 There is no charge for hosting. The free anonymous open-source Imgur account  allows approximately 1,250 uploads per day or approximately 12,500 requests per day.  If this package ever generates that much traffic (not bloody likely) we'll worry about limiting it.
