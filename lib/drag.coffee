@@ -1,9 +1,10 @@
 
 # lib/drag.coffee
 
-{$}      = require 'atom'
-pathUtil = require 'path'
-{post}   = require './post'
+{$}       = require 'atom'
+pathUtil  = require 'path'
+projHost  = require './proj-host'
+imgurHost = require './imgur-host'
 
 exports.drag = (e) ->
   if not (editor = atom.workspace.getActivePane()?.getActiveEditor())  or 
@@ -11,11 +12,11 @@ exports.drag = (e) ->
     return
     
   $title = $(e.target).closest('.tab').find('.title')
-
   if not /\.(jpg|jpeg|gif|png)$/i.test $title.text().toLowerCase() 
     return
+  imagePath = $title.attr 'data-path'
   
-  post $title.attr('data-path'), (res) ->
-    editor.insertText '\n\n![Image inserted by Atom editor package auto-host-markdown-image]' +
-                       '(' + res.link + '?delhash=' + res.deletehash + ')\n\n'
-    
+  if atom.config.get 'auto-host-markdown-image.hostFromYourGithubRepoInsteadOfImgur'
+    projHost editor, imagePath
+  else
+    imgurHost editor, imagePath

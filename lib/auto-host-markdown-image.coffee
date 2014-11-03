@@ -6,9 +6,14 @@
 module.exports = 
 class AutoHostMarkdownImage
   configDefaults:
-    autoOpenFileRegex: 'markdown\\.(jpeg|jpg|gif|png)$'
+    hostFromYourGithubRepoInsteadOfImgur: no
+    projectRelativePathToFolderForGithubImages: 'images'
   
   activate: ->
-    atom.workspaceView.on 'dragend', '.pane.active .tab-bar .sortable', (e) -> drag(e)
-
+    @subscription = atom.workspaceView.on 'dragend', 
+        '.pane.active .tab-bar .sortable', (e) -> drag(e)
+        
+  deactivate: ->
+    @subscription?.off()
+    
 module.exports = new AutoHostMarkdownImage

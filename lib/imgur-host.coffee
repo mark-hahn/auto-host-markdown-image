@@ -1,12 +1,12 @@
 
-# lib/post.coffee
+# lib/imgur-host.coffee
 
 fs      = require 'fs'
 request = require 'request'
 
 imgur_client_id = '259065b16533101'
 
-exports.post = (filePath, cb) ->
+module.exports = (editor, filePath) ->
 
   options =
     url: "https://api.imgur.com/3/upload"
@@ -26,7 +26,10 @@ exports.post = (filePath, cb) ->
         detailedMessage: 'Error uploading image to imgur: ' +
                           (err?.message ? '') + (body?.status ? '')
         buttons: ['Close']
-      cb()
       return
-
-    cb body.data
+    
+    console.log body
+    
+    editor.insertText \ 
+      '\n\n![Image inserted by Atom editor package ' +
+      'auto-host-markdown-image](' + body.data.link + ')\n\n'
