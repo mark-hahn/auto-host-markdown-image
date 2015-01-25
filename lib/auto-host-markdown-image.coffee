@@ -1,7 +1,7 @@
 
 # lib/auto-host-markdown-image.coffee
 
-{drag}    = require './drag'
+{drag} = require './drag'
 
 module.exports = 
 class AutoHostMarkdownImage
