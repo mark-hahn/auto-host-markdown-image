@@ -1,4 +1,7 @@
 
+## 0.2.2 - 2015-01-28
+  Added support for github hosting
+
 ## 0.2.1 - 2014-10-28
   Added mention of the advantage of immutable hosting
 
