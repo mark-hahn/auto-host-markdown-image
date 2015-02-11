@@ -2,6 +2,7 @@
 # lib/auto-host-markdown-image.coffee
 
 {drag} = require './drag'
+SubAtom = require 'sub-atom'
 
 module.exports = 
 class AutoHostMarkdownImage
@@ -10,10 +11,12 @@ class AutoHostMarkdownImage
     projectRelativePathToFolderForGithubImages: 'images'
   
   activate: ->
-    @subscription = atom.workspaceView.on 'dragend', 
+    @subs = new SubAtom
+    
+    @subs.add '.workspace', 'dragend', 
         '.pane.active .tab-bar .sortable', (e) -> drag(e)
         
   deactivate: ->
-    @subscription?.off()
+    @subs.dispose()
     
 module.exports = new AutoHostMarkdownImage

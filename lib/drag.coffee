@@ -7,7 +7,7 @@ projHost  = require './proj-host'
 imgurHost = require './imgur-host'
 
 exports.drag = (e) ->
-  if not (editor = atom.workspace.getActivePane()?.getActiveEditor())  or 
+  if not (editor = atom.workspace.getActiveTextEditor())  or 
          (pathUtil.extname(editor.getPath()).toLowerCase()) isnt '.md' 
     return
     

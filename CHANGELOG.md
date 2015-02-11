@@ -1,4 +1,7 @@
 
+## 0.2.3 - 2015-02-11
+  fixed imgur
+
 ## 0.2.2 - 2015-01-28
   Added support for github hosting
 
