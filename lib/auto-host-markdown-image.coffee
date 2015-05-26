@@ -6,14 +6,19 @@ SubAtom = require 'sub-atom'
 
 module.exports = 
 class AutoHostMarkdownImage
-  configDefaults:
-    hostFromYourGithubRepoInsteadOfImgur: no
-    projectRelativePathToFolderForGithubImages: 'images'
+  config:
+    hostFromYourGithubRepoInsteadOfImgur:
+      type: 'boolean'
+      default: no
+    projectRelativePathToFolderForGithubImages:
+      type: 'string'
+      default: 'images'
+
   
   activate: ->
     @subs = new SubAtom
     
-    @subs.add '.workspace', 'dragend', 
+    @subs.add 'atom-workspace', 'dragend', 
         '.pane.active .tab-bar .sortable', (e) -> drag(e)
         
   deactivate: ->

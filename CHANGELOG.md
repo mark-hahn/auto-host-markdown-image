@@ -1,4 +1,7 @@
 
+## 0.2.4 - 2015-5-26
+  deprecations
+
 ## 0.2.3 - 2015-02-11
   fixed imgur
 
